@@ -149,5 +149,12 @@ namespace TigerTix.Web.Controllers
         {
             return _context.Event.Any(e => e.ID == id);
         }
+
+
+        //Get: Approve
+        public async Task<IActionResult> Approve()
+        {
+            return View(await _context.Event.ToListAsync());
+        }
     }
 }

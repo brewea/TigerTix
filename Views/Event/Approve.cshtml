@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TigerTix.Web.Models.Event>
+
+@{
+    ViewData["Title"] = "Approve";
+}
+
+<h1>Approve Events</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EventName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventDateTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDateTime)
+                </td>
+                <td>
+                    <a asp-action="Approve" asp-route-id="@item.ID">Approve</a> |
+                    <a asp-action="Deny" asp-route-id="@item.ID">Deny</a> |
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
