@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Logging;
 using TigerTix.Web.Data;
-using TigerTix.Web.Models;
+using TigerTix.Web.Controllers;
+using TigerTix.Web.Areas.Login.Models;
+using TigerTix.Web.Areas.Account.Models;
 
-namespace TigerTix.Web.Controllers
+namespace TigerTix.Web.Areas.Login.Controllers
 {
     public class LoginController : Controller
     {
@@ -56,7 +58,7 @@ namespace TigerTix.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(Login model, string returnUrl = null)
+        public async Task<IActionResult> Login(LoginModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)

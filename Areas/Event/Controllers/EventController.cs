@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TigerTix.Web.Data;
-using TigerTix.Web.Models;
+using TigerTix.Web.Areas.Event.Models;
 
-namespace TigerTix.Web.Controllers
+namespace TigerTix.Web.Areas.Event.Controllers
 {
     public class EventController : Controller
     {
@@ -54,7 +54,7 @@ namespace TigerTix.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime")] Event @event)
+        public async Task<IActionResult> Create([Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime")] EventModel @event)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace TigerTix.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime")] EventModel @event)
         {
             if (id != @event.ID)
             {

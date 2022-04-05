@@ -1,15 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using TigerTix.Web.Models;
+using TigerTix.Web.Areas.Account.Models;
+using TigerTix.Web.Areas.Event.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace TigerTix.Web.Data
 {
     public class TigerTixWebContext : IdentityDbContext
     {
-        public DbSet<TigerTix.Web.Models.UserModel> User { get; set; }
+        public DbSet<UserModel> User { get; set; }
 
-        public DbSet<TigerTix.Web.Models.Event> Event { get; set; }
+        public DbSet<EventModel> Event { get; set; }
 
         private readonly IConfiguration _config;
 

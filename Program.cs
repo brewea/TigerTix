@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TigerTix.Web.Data;
 using TigerTix.Web.Models;
+using TigerTix.Web.Areas.Account.Models;
 
 namespace TigerTix.Web
 {
@@ -29,7 +30,7 @@ namespace TigerTix.Web
             builder.Services.AddRazorPages();
             builder.Services.AddDefaultIdentity<SingleUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<TigerTixWebContext>();
-            
+
 
             builder.Services.Configure<IdentityOptions>(options =>
             {
@@ -88,10 +89,21 @@ namespace TigerTix.Web
 
             app.UseEndpoints(endpoints =>
             {
+                /*
+                endpoints.MapControllerRoute(
+                    name: "Account Area",
+                    pattern: "{Areas=Account}/{controller=User}/{action=Create}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "Event Area",
+                    pattern: "{Areas=Event}/{controller=Event}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "Login Area",
+                    pattern: "{Areas=Login}/{controller=Login}/{action=Login}/{id?}");
 
                 endpoints.MapControllerRoute(
-                    name: "default",
+                    name: "Home",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                */
             });
             
 

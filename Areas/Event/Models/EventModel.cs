@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace TigerTix.Web.Models
+namespace TigerTix.Web.Areas.Event.Models
 {
-    public class Event
+    public class EventModel : PageModel
     {
         public int ID { get; set; }
         public string EventType { get; set; }

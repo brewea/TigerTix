@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace TigerTix.Web.Models
+namespace TigerTix.Web.Areas.Login.Models
 {
-    public class Login
+    public class LoginModel : PageModel
     {
         [Required]
         [EmailAddress]

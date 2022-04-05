@@ -1,4 +1,5 @@
-﻿@{
+﻿@page
+@{
     ViewData["Title"] = "Home Page";
 }
 <body>
@@ -11,7 +12,7 @@
                 </div>
                 <div class="col-lg-8 align-self-baseline">
                     <p class="text-white-75 mb-5">The best place to find tickets for on campus events!</p>
-                    <a class="btn btn-primary btn-xl" asp-area="" asp-controller="User" asp-action="Create">Create an account today</a>
+                    <a class="btn btn-primary btn-xl" asp-area="Account" asp-controller="User" asp-action="Create">Create an account today</a>
                 </div>
             </div>
         </div>

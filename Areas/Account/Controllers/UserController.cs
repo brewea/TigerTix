@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using TigerTix.Web.Data;
-using TigerTix.Web.Models;
+using TigerTix.Web.Controllers;
+using TigerTix.Web.Areas.Account.Models;
 
-namespace TigerTix.Web.Controllers
+namespace TigerTix.Web.Areas.Account.Controllers
 {
     [Authorize]
-    [Route("[controller]/[action]")]
     public class UserController : Controller
     {
         
