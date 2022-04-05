@@ -339,7 +339,7 @@ th {
 }
 
 label {
-    display: inline-block;
+    text-align: center;
 }
 
 button {
@@ -2225,13 +2225,15 @@ progress {
 
 .form-text {
     margin-top: 0.25rem;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 0.875em;
-    color: #6c757d;
+    color: white;
 }
 
 .form-control {
     display: block;
-    width: 100%;
+    width: 95%;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -2488,7 +2490,8 @@ textarea.form-control-lg {
     line-height: 1.5;
     color: #212529;
     background-color: #fff;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-image: 
+        ("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 12px;
@@ -5906,7 +5909,8 @@ textarea.form-control-lg {
     height: 1em;
     padding: 0.25em 0.25em;
     color: #000;
-    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+    background: transparent 
+        ("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
     border: 0;
     border-radius: 0.25rem;
     opacity: 0.5;
@@ -12030,6 +12034,43 @@ hr.divider-light {
                 }
 }
 
+.createAccount {
+    padding-top: 3rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../images/fountains.jpg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+}
+@media (min-width: 992px) {
+    createAccount {
+        height: 100vh;
+        min-height: 40rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+.createAccountLabel{
+
+}
+.createAccountFormGroup {
+    display: flex;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    background-color: transparent;
+    background-clip: padding-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 .masthead {
     padding-top: 10rem;
     padding-bottom: calc(10rem - 4.5rem);
@@ -12040,9 +12081,9 @@ hr.divider-light {
     background-size: cover;
 }
 
-    masthead h1, masthead .h1 {
-        font-size: 2.25rem;
-    }
+masthead h1, masthead .h1 {
+    font-size: 2.25rem;
+}
 
 @media (min-width: 992px) {
     masthead {
