@@ -2,7 +2,7 @@
 @model IEnumerable<TigerTix.Web.Areas.Event.Models.EventModel>
 
 @{
-    ViewData["Title"] = "Approve";
+    ViewData["Title"] = "Add";
 }
 
 <h1>Approve Events</h1>
@@ -43,8 +43,8 @@
                     @Html.DisplayFor(modelItem => item.EventDateTime)
                 </td>
                 <td>
-                    <a asp-action="Approve" asp-route-id="@item.ID">Approve</a> |
-                    <a asp-action="Deny" asp-route-id="@item.ID">Deny</a> |
+                    <button type="submit" name="SubmitButton" value="Approve" class="btn btn-sm btn-success">Approve</button>
+                    <button type="submit" name="SubmitButton" value="Deny" class="btn btn-sm btn-danger">Deny</button>
 
                 </td>
             </tr>

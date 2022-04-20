@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TigerTix.Web.Data;
 using TigerTix.Web.Areas.Event.Models;
+using System.Diagnostics;
 
 namespace TigerTix.Web.Areas.Event.Controllers
 {
+    [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
     public class EventController : Controller
     {
         private readonly TigerTixWebContext _context;
@@ -43,27 +45,6 @@ namespace TigerTix.Web.Areas.Event.Controllers
             return View(@event);
         }
 
-        // GET: Event/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Event/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime")] EventModel @event)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(@event);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(@event);
-        }
 
         // GET: Event/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -86,7 +67,7 @@ namespace TigerTix.Web.Areas.Event.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime")] EventModel @event)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime,EventStatus")] EventModel @event)
         {
             if (id != @event.ID)
             {
@@ -151,10 +132,64 @@ namespace TigerTix.Web.Areas.Event.Controllers
         }
 
 
-        //Get: Approve
-        public async Task<IActionResult> Approve()
+        //putting event into temporary database until it becomes approved 
+        // GET: Event/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Event/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime,EventStatus")] EventModel @event)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(@event);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(@event);
+        }
+
+
+        //Get: Add
+        public async Task<IActionResult> Add()
         {
             return View(await _context.Event.ToListAsync());
         }
+
+        //Post: Add
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
+        }
+        /*
+public async Task<IActionResult> Add([Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime,EventStatus")] EventModel @event, string SubmitButton)
+{
+   //if event is approved status is updated to approved 
+   if (SubmitButton == "approve")
+   {
+
+   }
+  if(SubmitButton == "deny")
+   {
+       //remove event from the database
+   }
+   //temporary 
+   return View(@event);
+
+}
+*/
+
+
+
+
+
     }
 }

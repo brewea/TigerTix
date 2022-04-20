@@ -18,12 +18,13 @@ namespace TigerTix.Web.Migrations
                     EventName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EventDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EventLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EventDateTime = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    EventDateTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EventStatus = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "Pending")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Event", x => x.ID);
-                });
+                });  ;
 
             migrationBuilder.CreateTable(
                 name: "User",
