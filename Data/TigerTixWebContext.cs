@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using TigerTix.Web.Areas.Account.Models;
 using TigerTix.Web.Areas.Event.Models;
+using TigerTix.Web.Areas.Ticket.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace TigerTix.Web.Data
@@ -11,6 +12,8 @@ namespace TigerTix.Web.Data
         public DbSet<UserModel> User { get; set; }
 
         public DbSet<EventModel> Event { get; set; }
+
+        public DbSet<TicketModel> Ticket { get; set; }
 
         private readonly IConfiguration _config;
 

@@ -169,23 +169,24 @@ namespace TigerTix.Web.Areas.Event.Controllers
         {
             return ToString();
         }
-        /*
+        
 public async Task<IActionResult> Add([Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime,EventStatus")] EventModel @event, string SubmitButton)
 {
    //if event is approved status is updated to approved 
    if (SubmitButton == "approve")
    {
 
+                _context.Update(@event);
    }
   if(SubmitButton == "deny")
    {
        //remove event from the database
-   }
+   }
    //temporary 
    return View(@event);
 
 }
-*/
+
 
 
 

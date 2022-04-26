@@ -89,7 +89,7 @@ namespace TigerTix.Web
 
             app.UseEndpoints(endpoints =>
             {
-                /*
+                
                 endpoints.MapControllerRoute(
                     name: "Account Area",
                     pattern: "{Areas=Account}/{controller=User}/{action=Create}/{id?}");
@@ -103,7 +103,7 @@ namespace TigerTix.Web
                 endpoints.MapControllerRoute(
                     name: "Home",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                */
+                
             });
             
 

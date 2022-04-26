@@ -20,6 +20,7 @@ namespace TigerTix.Web.Migrations
                     EventLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EventDateTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EventStatus = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "Pending")
+                    //add capacity and ticket price 
                 },
                 constraints: table =>
                 {
@@ -44,6 +45,21 @@ namespace TigerTix.Web.Migrations
                 {
                     table.PrimaryKey("PK_User", x => x.ID);
                 });
+
+            migrationBuilder.CreateTable(
+            name: "Ticket",
+            columns: table => new
+            {
+                ID = table.Column<int>(type: "int", nullable: false)
+                    .Annotation("SqlServer:Identity", "1, 1"),
+                TicketPrice = table.Column<string>(type: "float", nullable: true),
+                TicketDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                
+            },
+            constraints: table =>
+            {
+                table.PrimaryKey("PK_Event", x => x.ID);
+            }); ;
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -53,6 +69,9 @@ namespace TigerTix.Web.Migrations
 
             migrationBuilder.DropTable(
                 name: "User");
+
+            migrationBuilder.DropTable(
+                name: "Ticket");
         }
     }
 }

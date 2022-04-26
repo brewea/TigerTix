@@ -13,7 +13,7 @@ using System.Configuration;
 using Microsoft.Extensions.Configuration;
 
 namespace TigerTix.Web
-{/*
+{
     
     public class Startup
     {
@@ -54,5 +54,5 @@ namespace TigerTix.Web
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-    }*/
+    }
 }

@@ -37,7 +37,9 @@
         </dd>
     </dl>
 </div>
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    //links to the ticket page passing in the event ID
+    <%=@Html.ActionLink("Purchase Tickets","BuyTicket","Ticket", new { id = Model.ID}, null)
     <a asp-action="Index">Back to List</a>
 </div>
