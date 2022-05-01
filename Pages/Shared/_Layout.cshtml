@@ -9,6 +9,7 @@
 </head>
 <body>
     <header>
+        <div class="container">
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-orange border-bottom box-shadow">
                     <div class="container">
                         <a class="navbar-brand" asp-area="" asp-page="/Index">TigerTix</a>
@@ -25,19 +26,14 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Account" asp-page="/ViewUsers">View All Users</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="Event" asp-page="/Create">Create Event</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Ticket" asp-page="/Ticket">View Tickets</a>
                             </li>
                         </ul>
                         <partial name="_LoginPartial" />
                     </div>
                 </div>
             </nav>
+            </div>
     </header>
 
     <div class="container">

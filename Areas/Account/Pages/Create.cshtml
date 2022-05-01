@@ -8,7 +8,7 @@
         <body>
          <h1 style="text-align:center">Create an Account</h1>
         
-            <form method="post">
+            <form  asp-controller="User" asp-action="Create" asp-route-returnurl="@ViewData["ReturnUrl"] " method="post">
                 <div class="row justify-content-center">
                     <div class="form-group col-2">
                         <label asp-for="FirstName" class="control-label">First Name</label>
@@ -56,7 +56,7 @@
                 <br />
                 <div class="row justify-content-center">
                     <div class="form-group col-auto">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a class="btn btn-primary" asp-area="" asp-page="/Index">Create</a>
                     </div>
                 </div>
             </form>

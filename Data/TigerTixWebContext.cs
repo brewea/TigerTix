@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace TigerTix.Web.Data
 {
-    public class TigerTixWebContext : DbContext
+    public class TigerTixWebContext : IdentityDbContext<SingleUser>
     {
         public DbSet<UserModel> User { get; set; }
 
