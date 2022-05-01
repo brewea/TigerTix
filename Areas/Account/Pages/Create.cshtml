@@ -1,14 +1,14 @@
 ﻿@page
 @model TigerTix.Web.Areas.Account.Models.UserModel
-
 @{
     ViewData["Title"] = "Create";
+    Layout = "_Layout";
 }
 
-<div class="createAccount text-white">
-     <h1 style="text-align:center">Create an Account</h1>
-    <hr />
-            <form asp-action="Create">
+        <body>
+         <h1 style="text-align:center">Create an Account</h1>
+        
+            <form method="post">
                 <div class="row justify-content-center">
                     <div class="form-group col-2">
                         <label asp-for="FirstName" class="control-label">First Name</label>
@@ -60,12 +60,10 @@
                     </div>
                 </div>
             </form>
- <br />
-<div style="text-align:center">
-    <a asp-action="Index">Back to List</a>
-</div>
-</div>
+         <br />
+        
 
+</body>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

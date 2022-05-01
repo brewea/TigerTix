@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using TigerTix.Web.Data;
 using TigerTix.Web.Controllers;
@@ -18,18 +19,18 @@ namespace TigerTix.Web.Areas.Account.Controllers
     {
         
         private readonly TigerTixWebContext _context;
-        private readonly SignInManager<SingleUser> _signInManager;
-        private readonly UserManager<SingleUser> _userManager;
-        private readonly ILogger<SingleUser> _logger;
+        private readonly SignInManager<UserModel> _signInManager;
+        private readonly UserManager<UserModel> _userManager;
+        private readonly ILogger<UserModel> _logger;
         private readonly IEmailSender _emailSender;
 
         [BindProperty]
         public UserModel Input { get; set; }
         public string ReturnUrl { get; set; }
         public UserController(
-            UserManager<SingleUser> userManager,
-            SignInManager<SingleUser> signInManager,
-            ILogger<SingleUser> logger,
+            UserManager<UserModel> userManager,
+            SignInManager<UserModel> signInManager,
+            ILogger<UserModel> logger,
             IEmailSender emailSender,
             TigerTixWebContext context)
         {
@@ -38,16 +39,21 @@ namespace TigerTix.Web.Areas.Account.Controllers
             _logger = logger;
             _emailSender = emailSender;
             _context = context;
+            
+            
         }
         [TempData]
         public string ErrorMessage { get; set; }
 
+
         // View all Users
         [HttpGet]
-        public async Task<IActionResult> ViewUsers()
+        public UserModel ViewUsers()
         {
-            return View(await _context.User.ToListAsync());
-            
+            // var users = from u in _userManager.Users select u;
+            //var users = new UserModel;
+            return Input;
+
         }
 
         // REGISTER NEW USER
@@ -62,25 +68,22 @@ namespace TigerTix.Web.Areas.Account.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(UserModel model, string returnUrl = null)
+        public async Task<IActionResult> Create([Bind("ID,FirstName,LastName,Email,PhoneNumber,Password,CreditCard,AccountType")] UserModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new SingleUser { UserName = model.Email, Email = model.Email };
+                var user = new UserModel
+                { 
+                    FirstName = model.FirstName, 
+                    LastName = model.LastName, 
+                    PhoneNumber = model.PhoneNumber, 
+                    Password = model.Password, 
+                    Username = model.Email, 
+                    Email = model.Email 
+                };
                 var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
-
-                    // var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    // var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
-                    // await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
-
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
-                }
+                
                 AddErrors(result);
             }
 
@@ -103,7 +106,7 @@ namespace TigerTix.Web.Areas.Account.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
-
+        
 
 
 

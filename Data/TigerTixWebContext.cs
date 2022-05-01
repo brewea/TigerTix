@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace TigerTix.Web.Data
 {
-    public class TigerTixWebContext : IdentityDbContext
+    public class TigerTixWebContext : DbContext
     {
         public DbSet<UserModel> User { get; set; }
 
@@ -27,8 +27,5 @@ namespace TigerTix.Web.Data
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(_config["ConnectionStrings:DefaultConnection"]);
         }
-
-        
-
     }
 }

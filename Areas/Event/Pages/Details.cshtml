@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_Layout";
 }
 
 <h1>Details</h1>
@@ -38,7 +39,4 @@
     </dl>
 </div>
 
-<div>
-    @Html.ActionLink("Purchase Tickets","create","Ticket", new { id = model.ID}, null)
-    <a asp-action="Index">Back to List</a>
-</div>
+

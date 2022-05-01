@@ -3,46 +3,58 @@
 
 @{
     ViewData["Title"] = "Create";
+    Layout = "_Layout";
 }
 
-<h1>Create</h1>
+        <body>
+         <h1 style="text-align:center">Create an Event</h1>
+        
+            <form method="post">
+                <div class="row justify-content-center">
+                    <div class="form-group col-2">
+                        <label asp-for="EventType" class="control-label">Event Type</label>
+                        <input asp-for="EventType" class="form-control mb-2"/>
+                        <span asp-validation-for="EventType" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group col-2">
+                        <label asp-for="EventName" class="control-label">Event Name</label>
+                        <input asp-for="EventName" class="form-control mb-2" />
+                        <span asp-validation-for="EventName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="form-group col-2">
+                        <label asp-for="EventDateTime" class="control-label">Event Date and Time</label>
+                        <input asp-for="EventDateTime" class="form-control mb-2" />
+                        <span asp-validation-for="EventDateTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-2">
+                        <label asp-for="EventLocation" class="control-label">Event Location</label>
+                        <input asp-for="EventLocation" class="form-control mb-2" />
+                        <span asp-validation-for="EventLocation" class="text-danger"></span>
+                    </div>
+                </div>
+                
+                <div class="row justify-content-center ">
+                    <div class="form-group col-2">
+                        <label asp-for="EventDescription" class="control-label">Event Description</label>
+                        <input asp-for="EventDescription" class="form-control mb-2" />
+                        <span asp-validation-for="EventDescription" class="text-danger"></span>
+                    </div>
+                    
+                </div>
+                <br />
+                <div class="row justify-content-center">
+                    <div class="form-group col-auto">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+         <br />
 
-<h4>Event</h4>
-<hr />
-<div class="row justify-content-center">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EventName" class="control-label"></label>
-                <input asp-for="EventName" class="form-control" />
-                <span asp-validation-for="EventName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EventDescription" class="control-label"></label>
-                <input asp-for="EventDescription" class="form-control" />
-                <span asp-validation-for="EventDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EventLocation" class="control-label"></label>
-                <input asp-for="EventLocation" class="form-control" />
-                <span asp-validation-for="EventLocation" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EventDateTime" class="control-label"></label>
-                <input asp-for="EventDateTime" class="form-control" />
-                <span asp-validation-for="EventDateTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+</body>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -41,7 +41,7 @@ namespace TigerTix.Web.Areas.Account.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        
         [CreditCard]
         [Display(Name = "Credit Card")]
         public string CreditCard { get; set; }

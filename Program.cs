@@ -87,7 +87,7 @@ namespace TigerTix.Web
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+           /* app.UseEndpoints(endpoints =>
             {
                 
                 endpoints.MapControllerRoute(
@@ -104,8 +104,8 @@ namespace TigerTix.Web
                     name: "Home",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 
-            });
-            
+            });*/
+
 
 
 

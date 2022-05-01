@@ -28,14 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\lib\bootstrap\" />
-    <Folder Include="Areas\Ticket\" />
-    <Folder Include="Areas\Ticket\Controllers\" />
-    <Folder Include="Areas\Ticket\Models\" />
-    <Folder Include="Areas\Ticket\Pages\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Areas\Ticket\" />
     <None Remove="Areas\Ticket\Controllers\" />
     <None Remove="Areas\Ticket\Models\" />

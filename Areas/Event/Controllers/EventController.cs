@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace TigerTix.Web.Areas.Event.Controllers
 {
-    [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
+    //[DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
     public class EventController : Controller
     {
         private readonly TigerTixWebContext _context;
