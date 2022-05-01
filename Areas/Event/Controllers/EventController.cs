@@ -132,7 +132,7 @@ namespace TigerTix.Web.Areas.Event.Controllers
         }
 
 
-        //putting event into temporary database until it becomes approved 
+        
         // GET: Event/Create
         public IActionResult Create()
         {
@@ -157,6 +157,7 @@ namespace TigerTix.Web.Areas.Event.Controllers
 
 
         //Get: Add
+        //approving an event
         public async Task<IActionResult> Add()
         {
             return View(await _context.Event.ToListAsync());
@@ -170,27 +171,24 @@ namespace TigerTix.Web.Areas.Event.Controllers
             return ToString();
         }
         
-public async Task<IActionResult> Add([Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime,EventStatus")] EventModel @event, string SubmitButton)
-{
-   //if event is approved status is updated to approved 
-   if (SubmitButton == "approve")
-   {
-
+        public async Task<IActionResult> Add([Bind("ID,EventType,EventName,EventDescription,EventLocation,EventDateTime,EventStatus")] EventModel @event, string SubmitButton)
+        {
+            //if event is approved status is updated to approved 
+            if (SubmitButton == "approve")
+            {
+                @event.EventStatus = "Approved";
                 _context.Update(@event);
-   }
-  if(SubmitButton == "deny")
-   {
-       //remove event from the database
-   }
-   //temporary 
-   return View(@event);
+                return RedirectToAction(nameof(Index));
+            }
+            if(SubmitButton == "deny")
+            {
+                _context.Event.Remove(@event);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
 
-}
-
-
-
-
-
+            return View(@event);
+        }
 
     }
 }

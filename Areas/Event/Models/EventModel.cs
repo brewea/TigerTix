@@ -12,5 +12,6 @@ namespace TigerTix.Web.Areas.Event.Models
         public string EventLocation { get; set; }
 
         public string EventDateTime { get; set; }
+        public string EventStatus { get; set; }
     }
 }
